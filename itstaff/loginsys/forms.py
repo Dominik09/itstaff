@@ -1,21 +1,30 @@
 from django import forms
-from loginsys.models import User
+from .models import User
+from django.contrib.auth.forms import UserChangeForm, UserCreationForm
+
+class AdminUserAddForm(UserCreationForm):
+
+    class Meta:
+        model = User
+        fields = '__all__'
+
+    def clean_username(self):
+        username = self.cleaned_data['username']
+        try:
+            User.objects.get(username = username)
+        except User.DoesNotExist:
+            return username
+        raise forms.ValidationError(self.error_messages['duplicate_username'])
+
+class AdminUserChangeForm(UserChangeForm):
+
+    class Meta:
+        model = User
+        fields = '__all__'
 
 class RegistrationForm(forms.ModelForm):
+
     class Meta():
         model = User
-        fields = [
-            'username',
-            'first_name',
-            'last_name',
-            'email',
-            'birth_date',
-            'specialization',
-            'about_youself',
-            'gender',
-        ]
+        fields = '__all__'
 
-    password1 = forms.CharField(label="Password",
-    widget=forms.PasswordInput)
-    password2 = forms.CharField(label="Password confirmation",
-    widget=forms.PasswordInput)

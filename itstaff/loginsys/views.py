@@ -39,4 +39,4 @@ def registration(request):
     return render_to_response('register.html', args)
 
 def main_page(request):
-    return render_to_response('main.html', {})
+    return render_to_response('main.html', {'username': auth.get_user(request).username})
