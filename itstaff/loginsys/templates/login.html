@@ -1,6 +1,6 @@
 {% extends 'main.html' %}
 
-{% block login %}
+{% block loginsys %}
     <div class="nav-header">
         <form action="/auth/login/" method="post">{% csrf_token %}
             <label for="username">Имя пользователя</label>

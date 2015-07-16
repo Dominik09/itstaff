@@ -1,0 +1,15 @@
+{% extends 'main.html' %}
+{% block loginsys %}
+    <h3>{{ user.first_name }} {{ user.last_name }}</h3>
+
+    <p>{{ age }} Лет</p>
+    <hr>
+    <p>Специализация: {{ user.specialization }}</p>
+    <p>Учеба: {{ user.university }}</p>
+    <p>Кружки: {{ user.clubs }}</p>
+    {% for project in portfolio %}
+        <p>{{ project.screenshot }}</p>
+        <p>{{ project.link }}</p>
+        <p>{{ project.about }}</p>
+    {% endfor %}
+{% endblock %}

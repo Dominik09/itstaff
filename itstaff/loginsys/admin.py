@@ -19,7 +19,6 @@ class UserAdmin(BaseUserAdmin):
                 'last_name',
                 'email',
                 'birth_date',
-                'gender',
                 'is_active',
                 'specialization',
                 'category',)}),

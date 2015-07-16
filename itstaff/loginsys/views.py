@@ -2,6 +2,8 @@ from django.shortcuts import render_to_response, redirect
 from django.contrib import auth
 from django.core.context_processors import csrf
 from loginsys.forms import RegistrationForm
+from .models import User, Portfolio
+import datetime
 
 def login(request):
     args = {}
@@ -40,3 +42,17 @@ def registration(request):
 
 def main_page(request):
     return render_to_response('main.html', {'username': auth.get_user(request).username})
+
+def get_profile(request, Uid):
+    args = {}
+    args['user'] = User.objects.get(id = Uid)
+    args['age'] = 20
+    args['portfolio'] = Portfolio.objects.filter(user_id = Uid)
+
+    return render_to_response('profile.html', args)
+
+def edit_profile(request, Uid):
+    """
+    Редактирование профиля
+    """
+    pass
