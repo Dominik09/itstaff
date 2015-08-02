@@ -1,0 +1,11 @@
+{% extends 'main.html' %}
+{% block sheet %}
+	<div class="col-md-6">
+	<h3>Редактировать новость</h3>
+		<form action="{% url 'Edit_news' new.id %}" method="post" enctype="multipart/form-data">
+			{% csrf_token %}
+			{{ form.as_p }}
+			<input class="button" type="submit" value="Редактировать новость">
+		</form>
+	</div>
+{% endblock %}

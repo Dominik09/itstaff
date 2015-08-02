@@ -1,0 +1,21 @@
+{% extends 'main.html' %}
+{% block sheet %}
+	<h3>Список опубликованных новостей</h3>
+	<form action="/sheets/news_all/" method="post">
+		{% for sheet in list_news %}
+			<div class="container-fluid">
+				<div class="row">
+
+				    <div class="input-group">
+				      <span class="input-group-addon">
+				        <input type="checkbox">
+				      </span>
+				      		<p class="form-control input"><a href="/sheets/get/{{ sheet.id }}/">{{ sheet.title }}</a></p>
+				    </div>
+				</div>
+			</div>
+		{% endfor %}
+	</form>
+	</div>
+
+{% endblock %}

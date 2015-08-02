@@ -1,0 +1,24 @@
+{% extends 'main.html' %}
+{% load staticfiles %}
+{% block sheet %}
+	<img src="{{sheet.image.url}}" style="width:85%;" alt"">
+	<h2>{{sheet.title}}</h2>
+	<p>{{sheet.text}}</p>
+	<h4>Дата публикации:{{sheet.date}}</h4>
+	<p>Понравилось:{{sheet.likes}}</p>
+	<a href="/sheets/edit/{{ sheet.id }}/" class="btn btn-warning">Редактировать новость</a>
+	<hr>
+
+<p>Комментарии:</p>
+    {% for comment in comments %}
+    <p>{{ comment.com_text }}</p>
+{% endfor %}
+    {% if username %}
+    <form action="/sheets/addcomment/{{ sheet.id }}/" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" class="button" value="Добавить комментарий">
+    </form>
+    {% endif %}
+
+{% endblock %}

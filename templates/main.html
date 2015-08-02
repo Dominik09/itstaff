@@ -1,0 +1,94 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>IT-tracker</title>
+
+    <link href="{% static 'bootstrap/css/bootstrap.css' %}" rel="stylesheet" media="screen">
+    <link href="{% static 'bootstrap/css/style.css' %}" rel="stylesheet" media="screen">
+    <link href="{% static 'bootstrap/css/font-awesome.css' %}" rel="stylesheet" media="screen">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="{% static 'bootstrap/js/bootstrap.js' %}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+  </head>
+<body>
+
+	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#responsive-menu">
+				<span class="sr-only">Открыть навигацию</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="/"><img class="img-responsive" style="max-width:175px; margin-top: -15px; margin-left: 20px;" src="{% static 'bootstrap/images/logo.jpg' %}" alt=""></a>
+            </div>
+			<div class="collapse navbar-collapse" id="responsive-menu">
+				<ul class="nav navbar-nav">
+					<li class="divider-vertical"><a href="#"><p align="center">Пул<br>профилей</p></a></li>
+					<li class="divider-vertical"></li>
+					<li><a href="/addnews/"><p align="center">Пул<br>проектов</p></a></li>
+					<li><a href="/list_news/"><p align="center">Пул<br>работодателей</p></a></li>
+					<!---{% if user %}
+					<li><a href="{% url 'Profile' user.id %}">Мой профиль</a></li>
+					{% endif %}-->
+				</ul>
+				 <ul class="navbar-form navbar-right">
+				 
+					{% if user.is_autentificated %}
+					<li><a href="/auth/logout/">Выйти ({{ user.username }})</a></li>
+					{% else %}
+					<form action="" class="navbar-form navbar-right">
+					<!--<div class="form-group">
+						<input type="text" class="form-control"placeholder="E-mail" value="" id="username">	
+					</div>
+					<div class="form-group">
+						<input type="password" class="form-control" placeholder="Password" value="" id="password">
+					</div>
+			        {% if login_error %}
+				    <label class="error">{{ login_error }}</label>
+				    {% endif %}
+					<button type="submit" class="btn btn-primary">
+						<i class="fa fa-sign-in"></i>Войти
+					</button>-->
+                    <a href="/auth/login/" class="btn btn-primary">Войти</a>
+					<a href="/auth/registration/" class="btn btn-warning">Регистрация</a>
+				</form>
+					{% endif %}
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div class="container">
+    	<div class="row">
+    		<img class="img-responsive" src="{% static 'bootstrap/images/микрочип2.jpg' %}" style="width: 100% " alt="">
+            <div class="carousel-caption">
+                <span style="background-color: #FFFFFF;">Формируй рейтинг <br> и выстраивай карьеру уже сейчас</span>
+            </div>
+    			<a href="#" class="btn btn-success btn-lg-absolute" style="margin-left:315px; margin-top: -45%;"><p align="center">Я начинающий<br>программист</p></a>
+      			<a href="#" class="btn btn-warning btn-lg-fixed" style="margin-left:215px; margin-top: -45%;">Я работодатель</a>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            {% block sheet %}{% endblock %}
+        </div>
+    </div>
+    <div class="col-sm-6">
+        {% block loginsys %}{% endblock %}
+        
+    </div>
+
+    <div class="container">
+        <div class="row">
+        <img class="img-responsive" src="{% static 'bootstrap/images/min.jpg' %}" style="max-width:1120px; margin-top:-20px;" alt="">
+        </div>
+    </div>
+</body>
+</html> 

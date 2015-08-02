@@ -1,0 +1,11 @@
+{% extends 'main.html' %}
+	{% block sheet %}
+	<div class="col-sm-3">
+	<h3>Добавить новость</h3>
+		<form action="/addnews/" method="post">
+			{% csrf_token %}
+			{{ form }}
+			<input class="button" type="submit" value="Добавить новость">
+		</form>
+	</div>
+{% endblock %}

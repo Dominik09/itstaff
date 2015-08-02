@@ -1,0 +1,10 @@
+{% extends 'main.html' %}
+{% block loginsys %}
+	<div class="col-sm-3">
+	<form action="/auth/registration/" method="post">
+            {% csrf_token %}
+            {{ form }}
+	<input class="button" type="submit" name="student" value="Зарегистрироваться">
+	</form>
+	</div>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'main.html' %}
+{% load staticfiles %}
+{% block sheet %}
+ <div class="container-fluid">
+  	<div class="row">
+		{% for sheet in sheets %}
+		 	<div class="col-sm-4">
+				<h4 style="background-color: #FFDEAD; text-align: center; color: #000000;"><a href="/sheets/get/{{ sheet.id }}/">{{sheet.title}}</a></h4>
+				<span><i class="fa fa-clock-o"></i> {{sheet.date}}</span>
+				<img width="290" height="130" src="{{sheet.image.url}}"  />
+				<p>{{sheet.text }}<a href="/sheets/get/{{ sheet.id }}/">Читать далее</a></p>
+			</div>
+		{% endfor %}
+	</div>
+</div>
+
+{% endblock %}
