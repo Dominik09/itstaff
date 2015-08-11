@@ -1,8 +1,8 @@
-{% extends 'main.html' %}
+{% extends 'base_main.html' %}
 	{% block sheet %}
 	<div class="col-sm-3">
 	<h3>Добавить новость</h3>
-		<form action="/addnews/" method="post">
+		<form action="/addnews/" method="post" enctype="multipart/form-data">
 			{% csrf_token %}
 			{{ form }}
 			<input class="button" type="submit" value="Добавить новость">

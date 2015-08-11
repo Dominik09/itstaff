@@ -1,13 +1,30 @@
-{% extends 'main.html' %}
+{% extends 'base_main.html' %}
 {% load staticfiles %}
 {% block sheet %}
-	<img src="{{sheet.image.url}}" style="width:85%;" alt"">
+	<img src="{{sheet.image.url}}" data-toggle="modal" data-target="#modal-1" style="margin-left:25%; margin-right:15%; margin-top:-1%; width:50%;" alt="">
 	<h2>{{sheet.title}}</h2>
 	<p>{{sheet.text}}</p>
 	<h4>Дата публикации:{{sheet.date}}</h4>
 	<p>Понравилось:{{sheet.likes}}</p>
 	<a href="/sheets/edit/{{ sheet.id }}/" class="btn btn-warning">Редактировать новость</a>
 	<hr>
+    
+<div class="modal fade" id="modal-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" type="button" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Изображение</h4>
+            </div>
+            <div class="modal-body-lg">
+                <img src="{{sheet.image.url}}" style="width:100%;" alt="">
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger" type="button" data-dismiss="modal">Закрыть</button>
+            </div>
+        </div>
+    </div>
+ </div>
 
 <p>Комментарии:</p>
     {% for comment in comments %}

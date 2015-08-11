@@ -1,17 +1,17 @@
-{% extends 'main.html' %}
-{% load staticfiles %}
-{% block sheet %}
+
  <div class="container-fluid">
   	<div class="row">
 		{% for sheet in sheets %}
-		 	<div class="col-sm-4">
-				<h4 style="background-color: #FFDEAD; text-align: center; color: #000000;"><a href="/sheets/get/{{ sheet.id }}/">{{sheet.title}}</a></h4>
-				<span><i class="fa fa-clock-o"></i> {{sheet.date}}</span>
-				<img width="290" height="130" src="{{sheet.image.url}}"  />
-				<p>{{sheet.text }}<a href="/sheets/get/{{ sheet.id }}/">Читать далее</a></p>
+		 	<div class="col-lg-4">
+		 	<br>
+				<span style="color: #ff9933; margin-left: 3%;"><i class="fa fa-clock-o"></i> {{sheet.date}}</span>
+				<div class="container" style="width: 100%; height:70px">
+				<h4 style="text-align: left; text-transform: uppercase; color: #000000; margin-left: -3%;"><a href="/sheets/get/{{ sheet.id }}/">{{sheet.title}}</a></h4></div>
+				<img width="324" height="205" style=" margin-bottom: 3%;" src="{{sheet.image.url}}">
+				<p style=" white-space: normal; text-overflow: ellipsis; overflow: hidden; max-height: 120px; max-width: 93%;">{{ sheet.text|truncatechars_html:240 }}</p><a href="/sheets/get/{{ sheet.id }}/">Читать далее</a>
 			</div>
 		{% endfor %}
 	</div>
 </div>
 
-{% endblock %}
+

@@ -8,6 +8,8 @@ from .forms import CommentForm, AddNewsForm, EditNewsForm
 from django.core.context_processors import csrf
 from django.contrib import auth
 from loginsys.models import User
+from django.views.generic import CreateView
+from django.core.urlresolvers import reverse_lazy
 
 # Create your views here.
 
@@ -52,19 +54,19 @@ def addcomment(request, sheet_id):
     return redirect('/sheets/get/%s/' % sheet_id)
 
 
-def addnews(request):
-    args = {}
-    args.update(csrf(request))
-    args['form'] = AddNewsForm()
-    if request.method == "POST":
-        news_form = AddNewsForm(request.POST, request.FILES)
-        if news_form.is_valid():
-            sheet = news_form.save()
-            args['sheet'] = Sheet.objects.get(id = sheet.id)
-            return redirect('/sheets/%s/' % args['sheet'].id)
-        else:
-            args['form'] = news_form
-    return render_to_response('addnews.html', args)
+# def addnews(request):
+#     args = {}
+#     args.update(csrf(request))
+#     args['form'] = AddNewsForm()
+#     if request.method == "POST":
+#         news_form = AddNewsForm(request.POST, request.FILES)
+#         if news_form.is_valid():
+#             sheet = news_form.save()
+#             args['sheet'] = Sheet.objects.get(id = sheet.id)
+#             return redirect('/sheets/%s/' % args['sheet'].id)
+#         else:
+#             args['form'] = news_form
+#     return render_to_response('addnews.html', args)
 
 def ednews(request, sheet_id):
     args = {}
@@ -85,12 +87,12 @@ def ednews(request, sheet_id):
 
 def news_all(request):
     args = {}
-    args['list_news'] = Sheet.objects.all()
-    if request.POST:
-        news_form = Sheet.objects.get(pk=args['list_news'].id)
-        if news_form.is_valid():
-            news_form.delete()
-            return redirect('/')
-        else:
-            args['list_news'] = news_form
+    args['list_news'] = Sheet.objects.all().order_by('-date')
     return render_to_response('list_news.html', args)
+
+class CreateNewsItem(CreateView):
+    model = Sheet
+    form_class = AddNewsForm
+    template_name = 'addnews.html'
+    success_url = reverse_lazy('List_news')
+addnews = CreateNewsItem.as_view()

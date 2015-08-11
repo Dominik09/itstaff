@@ -11,8 +11,8 @@ urlpatterns = patterns('sheet.views',
     url(r'^sheets/addlike/(?P<sheet_id>\d+)/$', 'addlike'),
     url(r'^sheets/addcomment/(?P<sheet_id>\d+)/$', 'addcomment'),
     url(r'^addnews/', 'addnews'),
-    url(r'^list_news/', 'news_all'),
-    url(r'^$', 'sheets'),
+    url(r'^list_news/', 'news_all', name='List_news'),
+
     )
 
 if settings.DEBUG:

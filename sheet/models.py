@@ -11,7 +11,7 @@ class Sheet(models.Model):
     text = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
     likes = models.IntegerField(default = 0)
-    image = models.ImageField(upload_to="files/", null = True, blank = True)
+    image = models.ImageField(upload_to="", null = True, blank = True)
     def __str__(self):
         return self.title
 class Comments(models.Model):

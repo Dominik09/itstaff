@@ -1,3 +1,7 @@
-from django.test import TestCase
+from django.test import TestCase, Client
+from sheet.models import Sheet
 
-# Create your tests here.
+class TestNews(TestCase):
+	def test_addnews(self):
+		response=self.client.get('/addnews/')
+		self.assertEqual(response.resolver_match.func.__name__, 'addnews')

@@ -60,73 +60,14 @@
 			</div>
 		</div>
 	</nav>
-	<div class="list" style="">
-		<section class="banner" style="position: relative;">
-	    	<div class="row">
-	    		<img class="img-responsive" style="margin: 0 auto; width: 98% " src="{% static 'bootstrap/images/баннер.png' %}" alt="">
-	            <div class="carousel-caption">
-	                <span>Формируй рейтинг и выстраивай карьеру уже сейчас</span>
-	            </div>
-	            <div class="group">
-		  			<a href="#" class="btn_prog"><h4 align="center">Я программист</h4></a>
-		            <div class="carousel-caption2">
-		            	<span>Рассказывай о своих достижениях, загружай проекты и будь на виду у лучших работодателей Пензы</span>
-		        	</div>
-	        	</div>
-	        	<div class="group2">
-			  			<a href="#" class="btn_emp"><h4 align="center">Я работодатель</h4></a>
-		            <div class="carousel-caption3">
-		            	<span>Оптимизируйте поиск талантливых программистов с помощью многоуровневой системы рейтинга</span>
-		        	</div>
-	        	</div>
-	        </div>
-	    </section>
-	    <div class="container">
-	        <div class="row">
-	            {% block sheet %}{% last_sheets %}{% endblock %}
-	        </div>
-	    </div>
-	    <div class="col-sm-6">
-	        {% block loginsys %}{% endblock %}
-	    </div>
-
-	    <div class="container-fluid" style="background-color: #ff9933;">
-	    <br>
-	    </div>
-
-	     	<div class="container" style="text-align: center">
-	  		<div class="row">
-			 	<h2 class="competition" text align="center">НОВЫЙ КОНКУРС</h2>
-			 	<div class="col-sm-10">
-				 	<img class="img-responsive" src="{% static 'bootstrap/images/конкурс.jpg' %}" style="width=100%; margin-left: 100px;">
-			 	</div>
-		 	</div>
-	 	</div>
-
-	 	<div class="container" style="text-align: center">
-	  		<div class="row">
-			 	<h3 class="partners" text align="center">НАШИ ПАРТНЕРЫ</h3>
-			 	<div class="col-lg-12">
-				 	<img src="{% static 'bootstrap/images/code_inside.png' %}" style="width:15%; margin: 10px;">
-				 	<img src="{% static 'bootstrap/images/tortuga.png' %}" style="width:15%; margin: 10px;">
-				 	<img src="{% static 'bootstrap/images/smile.png' %}" style="width:10%; margin: 10px;">
-				 	<img src="{% static 'bootstrap/images/мое_дело.png' %}" style="width:15%; margin: 10px;">
-			 	</div>
-		 	</div>
-	 	</div>
-	 	<div class="container" style="text-align: center">
-	  		<div class="row">
-			 	<h4 class="info" text align="center">IT-TRACKER — это площадка, где встречаются талантливые программисты и успешные работодатели</h4>
-			 	<div class="col-lg-6">
-			 	<h4 class="inf_prog">ПРОГРАММИСТАМ</h4>
-			 		<p>SECON — Ассоциация разработчиков программного обеспечения города Пензы, объединяет руководителей софтверных компаний, разработчиков программного обеспечения, фрилансеров, преподавателей и студентов — активное сообщество IT-специалистов региона.</p>
-			 	</div>
-			 	<div class="col-lg-6">
-			 	<h4 class="inf_emp">РАБОТОДАТЕЛЯМ</h4>
-			 		<p>SECON — Ассоциация разработчиков программного обеспечения города Пензы, объединяет руководителей софтверных компаний, разработчиков программного обеспечения, фрилансеров, преподавателей и студентов — активное сообщество IT-специалистов региона.</p>
-			 	</div>
-		 	</div>
-	 	</div>
+    <div class="container">
+        <div class="row">
+            {% block sheet %}{% last_sheets %}{% endblock %}
+        </div>
+    </div>
+    <div class="col-sm-6">
+        {% block loginsys %}{% endblock %}
+    </div>
  <div class="modal fade" id="modal-1">
  	<div class="modal-dialog modal-lg" style="width:20%">
  		<div class="modal-content">
@@ -155,9 +96,6 @@
  		</div>
  	</div>
  </div>
-		<br>
-	 	<br>
-	 	<br>
- 	</div>
+
 </body>
 </html> 
